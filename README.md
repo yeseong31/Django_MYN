@@ -6,7 +6,7 @@
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-3.1.3-000000.svg?style=flat-square&logo=intellij-idea&logoColor=white)
 
 ### Tools
-![Notion](https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=notion&logoColor=white)
+[![Notion](https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=notion&logoColor=white)](https://www.notion.so/Backend-3e5c6c7e856e4014a6eedf50bce790a1)
 
 ***
 
