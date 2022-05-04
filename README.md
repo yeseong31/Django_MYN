@@ -21,9 +21,8 @@
   - Spring Initializr을 통해 생성한 Spring Boot의 파일과 GitHub의 파일이 충돌될 수 있음에 유의해야 한다.
 
 - 프로젝트의 폴더를 Intellij IDEA를 통해 Open한다.
-  - src/main/resources/application.properties 파일의 경우 .gitignore 되어 있기 때문에 GitHub에 내용이 반영되어 있지 않다.
-  - [application.properties 설정](https://github.com/yeseong31/Study_SpringBoot_Project/wiki/application.properties-%ED%8C%8C%EC%9D%BC)을 참고하여 비어 있는 파일의 내용을 수정한다.
-  - 프로젝트에 포함된 코드 중 일부는 **프로젝트를 실행해야만 동작하는 경우**도 있으므로([Q도메인](https://github.com/yeseong31/Study_SpringBoot_Project/wiki/%EB%8F%99%EC%A0%81-%EC%BF%BC%EB%A6%AC-%EC%B2%98%EB%A6%AC%EB%A5%BC-%EC%9C%84%ED%95%9C-Querydsl) 등) 기본 설정이 완료되면 프로젝트를 한 번 실행해 본다.
+  - src/main/resources/application.properties 파일의 경우 .gitignore 되어 있으므로 [application.properties 설정](https://github.com/yeseong31/Study_SpringBoot_Project/wiki/application.properties-%ED%8C%8C%EC%9D%BC)을 참고하여 파일을 수정한다.
+  - 프로젝트에 포함된 코드 중 일부는 **프로젝트를 실행해야만 동작하는 경우**도 있으므로([Q도메인](https://github.com/yeseong31/Study_SpringBoot_Project/wiki/%EB%8F%99%EC%A0%81-%EC%BF%BC%EB%A6%AC-%EC%B2%98%EB%A6%AC%EB%A5%BC-%EC%9C%84%ED%95%9C-Querydsl) 등) 설정이 완료되면 프로젝트를 한 번 실행해 본다.
 
 ---
 
