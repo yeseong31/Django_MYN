@@ -3,7 +3,8 @@
 ## 💻 Platforms
 ![SpringBoot: Version](https://img.shields.io/badge/SpringBoot-2.6.6-6DB33F.svg?logo=SpringBoot&logoColor=white)
 ![MariaDB: Version](https://img.shields.io/badge/MariaDB-10.6.7-003545.svg?logo=MariaDB&logoColor=white)
-![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-3.1.3-000000.svg?style=flat-square&logo=intellij-idea&logoColor=white)
+![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=flat-square&logo=intellij-idea&logoColor=white)
+![Heroku](https://img.shields.io/badge/Heroku-10.6.7-003545.svg?logo=Heroku&logoColor=white)
 
 ## 🔧 Tools
 [![Notion](https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=notion&logoColor=white)](https://www.notion.so/Backend-3e5c6c7e856e4014a6eedf50bce790a1)
