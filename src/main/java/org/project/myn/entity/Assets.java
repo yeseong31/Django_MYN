@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Assets extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // NFT 이름
