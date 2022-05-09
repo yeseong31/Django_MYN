@@ -2,7 +2,7 @@ package org.project.myn.repository;
 
 import org.junit.jupiter.api.Test;
 import org.project.myn.entity.Accounts;
-import org.project.myn.sha.SHA256;
+import org.project.myn.security.SHA256;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

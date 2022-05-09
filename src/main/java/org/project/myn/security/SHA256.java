@@ -1,4 +1,4 @@
-package org.project.myn.sha;
+package org.project.myn.security;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
