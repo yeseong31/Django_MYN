@@ -25,7 +25,7 @@ public class NftSales extends BaseEntity {
     // 경매유형
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
-    private Set<Auction> auctionSet = new HashSet<>();
+    private Set<Auction> auction_type = new HashSet<>();
 
     // 스마트계약서주소
     private String contract_address;
@@ -34,7 +34,9 @@ public class NftSales extends BaseEntity {
     private Long quantity;
 
     // 결제기호
-    private String payment_symbol;
+    @ElementCollection(fetch = FetchType.LAZY)
+    @Builder.Default
+    private Set<Payment> payment_symbol = new HashSet<>();
 
     // NFT 지불가격
     private Double total_price;
@@ -55,8 +57,15 @@ public class NftSales extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Accounts to_account;
 
+    // 자산 ID
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Assets asset;
+
     // 컬렉션 ID
     @ManyToOne(fetch = FetchType.LAZY)
     private Collections collection;
+
+    public void addPaymentSet(Payment payment) { payment_symbol.add(payment); }
+    public void addAuctionSet(Auction auction) { auction_type.add(auction); }
 
 }
