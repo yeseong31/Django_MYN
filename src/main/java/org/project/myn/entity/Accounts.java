@@ -23,4 +23,8 @@ public class Accounts extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String address;
 
+    public void changeUsername(String username) {
+        this.username = username;
+    }
+
 }

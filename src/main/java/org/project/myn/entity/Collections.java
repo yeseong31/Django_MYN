@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Collections extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     // Slug(키워드를 사용한 URL의 일부)
@@ -25,5 +25,9 @@ public class Collections extends BaseEntity {
 
     // OpenSea url
     private String url;
+
+    public void changeName(String name) {
+        this.name = name;
+    }
 
 }
