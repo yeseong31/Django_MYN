@@ -34,4 +34,4 @@
 ---
 
 ## 💾 DATABASES
-[ERDCloud](https://www.erdcloud.com/d/pKAjCG9Pq5T3HzXDj)
+![image](https://user-images.githubusercontent.com/66625672/167372617-822e3a46-1219-4a45-9b8c-e959b26736db.png)
