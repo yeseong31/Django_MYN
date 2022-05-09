@@ -69,6 +69,7 @@ public class AssetsRepositoryTests {
             AssetsImage assetsImage = AssetsImage.builder()
                     .uuid(UUID.randomUUID().toString())
                     .assets(assets)
+                    .name("image" + i)
                     .path("https://lh3.googleusercontent.com/" + sha_img_url)
                     .build();
             assetsImageRepository.save(assetsImage);
