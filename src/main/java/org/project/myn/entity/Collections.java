@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Collections extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // Slug(키워드를 사용한 URL의 일부)
