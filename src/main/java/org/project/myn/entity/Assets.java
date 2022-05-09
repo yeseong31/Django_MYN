@@ -3,7 +3,7 @@ package org.project.myn.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Builder
@@ -25,7 +25,7 @@ public class Assets extends BaseEntity {
     private String description;
 
     // Smart Contract
-    private LocalDateTime contract_date;
+    private LocalDate contract_date;
 
     // url
     @Column(unique = true)
