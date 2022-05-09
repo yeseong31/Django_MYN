@@ -1,5 +1,8 @@
 # 🪙 Make Your NFT
 
+## Language
+![Java](https://img.shields.io/badge/Java-007396.svg?style=flat-square&logo=Java&logoColor=white)
+
 ## 💻 Platforms
 ![SpringBoot: Version](https://img.shields.io/badge/SpringBoot-6DB33F.svg?logo=SpringBoot&logoColor=white)
 ![MariaDB: Version](https://img.shields.io/badge/MariaDB-003545.svg?logo=MariaDB&logoColor=white)
