@@ -20,7 +20,7 @@ public class Accounts extends BaseEntity {
     private String username;
 
     // 계정주소
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String address;
 
 }
