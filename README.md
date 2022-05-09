@@ -38,4 +38,4 @@
 ---
 
 ## 💾 DATABASES
-![image](https://user-images.githubusercontent.com/66625672/167395956-74d94c3e-a616-4cd9-b5f1-1390ee7816ea.png)
+![image](https://user-images.githubusercontent.com/66625672/167400869-cffdadca-2827-4105-bd04-566e8ec39d9e.png)
