@@ -17,9 +17,12 @@ public class AccountsRepositoryTests {
     @Autowired
     private AccountsRepository accountsRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Test
     public void insertDummies() {
-        // USER: 1~80 | USER&MANAGER: 81~90 | USER&MANAGER&ADMIN: 91~100
+        // USER: 1~50 | USER&MANAGER: 51~180 | USER&MANAGER&ADMIN: 180~100
         IntStream.rangeClosed(1, 200).forEach(i -> {
             SHA256 sha256 = new SHA256();
             String address = "test" + i;
@@ -34,7 +37,7 @@ public class AccountsRepositoryTests {
             Accounts accounts = Accounts.builder()
                     .username("test" + i)
                     .address(sha_address)
-                    .password("test" + i)  // 암호화 적용 필요
+                    .password(passwordEncoder.encode("test" + i))
                     .email("test" + i + "@test.com")
                     .build();
 
