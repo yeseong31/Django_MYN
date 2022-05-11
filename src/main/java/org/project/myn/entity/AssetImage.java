@@ -9,7 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "assets")
+@ToString(exclude = "asset")
 public class AssetImage extends BaseEntity {
 
     @Id

@@ -43,7 +43,7 @@ public interface AssetService {
         }
 
         // Account 처리
-        AccountDTO accountDTO = assetDTO.getAccountDTO();
+        AccountDTO accountDTO = assetDTO.getAccount();
         Account account = Account.builder()
                 .id(accountDTO.getId())
                 .username(accountDTO.getUsername())
@@ -88,7 +88,7 @@ public interface AssetService {
                 .build();
 
         assetDTO.setImageDTOList(assetImageDTOList);
-        assetDTO.setAccountDTO(accountDTO);
+        assetDTO.setAccount(accountDTO);
 
         return assetDTO;
     }

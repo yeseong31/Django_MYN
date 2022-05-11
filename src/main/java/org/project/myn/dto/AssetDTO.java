@@ -26,7 +26,7 @@ public class AssetDTO {
     @Builder.Default
     private List<AssetImageDTO> imageDTOList = new ArrayList<>();
 
-    private AccountDTO accountDTO = new AccountDTO();
+    private AccountDTO account = new AccountDTO();
 
     private LocalDateTime regDate, modDate;
 
