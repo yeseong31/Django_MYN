@@ -5,7 +5,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import org.junit.jupiter.api.Test;
 import org.project.myn.entity.Account;
 import org.project.myn.entity.AccountRole;
-import org.project.myn.entity.QAccounts;
+import org.project.myn.entity.QAccount;
 import org.project.myn.security.SHA256;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,18 +42,18 @@ public class AccountRepositoryTests {
                 e.printStackTrace();
             }
 
-            Account accounts = Account.builder()
+            Account account = Account.builder()
                     .username("test" + i)
                     .address(sha_address)
                     .password(passwordEncoder.encode("test" + i))
                     .email("test" + i + "@test.com")
                     .build();
 
-            accounts.addMemberRole(AccountRole.USER);
-            if (i > 50) accounts.addMemberRole(AccountRole.MEMBER);
-            if (i > 180) accounts.addMemberRole(AccountRole.ADMIN);
+            account.addMemberRole(AccountRole.USER);
+            if (i > 50) account.addMemberRole(AccountRole.MEMBER);
+            if (i > 180) account.addMemberRole(AccountRole.ADMIN);
 
-            accountsRepository.save(accounts);
+            accountsRepository.save(account);
         });
     }
 
@@ -65,7 +65,7 @@ public class AccountRepositoryTests {
         Pageable pageable = PageRequest.of(0, 10, Sort.by("id").descending());
 
         // 1) 동적 처리를 위해 Q도메인 클래스 활용
-        QAccounts qAccounts = QAccounts.accounts;
+        QAccount qAccount = QAccount.account;
 
         String keyword = "1";
 
@@ -73,7 +73,7 @@ public class AccountRepositoryTests {
         BooleanBuilder builder = new BooleanBuilder();
 
         // 3) 원하는 조건은 필드 값과 같이 결합하여 생성 (com.querydsl.core.types.Predicate 타입)
-        BooleanExpression expression = qAccounts.username.contains(keyword);
+        BooleanExpression expression = qAccount.username.contains(keyword);
 
         // 4) 조건을 키워드와 결합
         builder.and(expression);

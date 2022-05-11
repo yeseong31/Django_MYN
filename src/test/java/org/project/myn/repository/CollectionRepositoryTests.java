@@ -4,7 +4,7 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.junit.jupiter.api.Test;
 import org.project.myn.entity.Collection;
-import org.project.myn.entity.QCollections;
+import org.project.myn.entity.QCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -25,12 +25,12 @@ public class CollectionRepositoryTests {
     public void insertDummies() {
         IntStream.rangeClosed(1, 100).forEach(i -> {
             String slug = "slug" + i;
-            Collection collections = Collection.builder()
+            Collection collection = Collection.builder()
                     .name("name" + i)
                     .slug(slug)
                     .url("https://opensea.io/collection/" + slug)
                     .build();
-            collectionsRepository.save(collections);
+            collectionsRepository.save(collection);
         });
     }
 
@@ -41,18 +41,18 @@ public class CollectionRepositoryTests {
     public void testQuery() {
         Pageable pageable = PageRequest.of(0, 10, Sort.by("id").descending());
 
-        QCollections qCollections = QCollections.collections;
+        QCollection qCollection = QCollection.collection;
 
         String keyword = "1";
 
         BooleanBuilder builder = new BooleanBuilder();
 
-        BooleanExpression expName = qCollections.name.contains(keyword);
-        BooleanExpression expSlug = qCollections.slug.contains(keyword);
+        BooleanExpression expName = qCollection.name.contains(keyword);
+        BooleanExpression expSlug = qCollection.slug.contains(keyword);
         BooleanExpression expAll = expName.or(expSlug);
 
         builder.and(expAll);
-        builder.and(qCollections.id.gt(0L));
+        builder.and(qCollection.id.gt(0L));
 
         Page<Collection> result = collectionsRepository.findAll(builder, pageable);
         result.stream().forEach(System.out::println);

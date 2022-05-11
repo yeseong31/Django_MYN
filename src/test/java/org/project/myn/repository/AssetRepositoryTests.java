@@ -46,7 +46,7 @@ public class AssetRepositoryTests {
 
             int n = (int) (Math.random() * 200) + 1;
 
-            Asset assets = Asset.builder()
+            Asset asset = Asset.builder()
                     .name(name)
                     .description("description..." + i)
                     .contract_date(randomDate)
@@ -54,7 +54,7 @@ public class AssetRepositoryTests {
                     .owner(Account.builder().id((long) n).build())
                     .build();
             System.out.println("————————————————————————————————————————");
-            assetsRepository.save(assets);
+            assetsRepository.save(asset);
 
             String url = "img_url" + i;
             String sha_img_url = null;
@@ -67,7 +67,7 @@ public class AssetRepositoryTests {
 
             AssetImage assetsImage = AssetImage.builder()
                     .uuid(UUID.randomUUID().toString())
-                    .assets(assets)
+                    .assets(asset)
                     .name("image" + i)
                     .path("https://lh3.googleusercontent.com/" + sha_img_url)
                     .build();

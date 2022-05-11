@@ -31,7 +31,7 @@ public class NftSaleRepositoryTests {
                 e.printStackTrace();
             }
 
-            NftSale nftSales = NftSale.builder()
+            NftSale nftSale = NftSale.builder()
                     .time(LocalDateTime.now())
                     .asset(Asset.builder().id((long)(Math.random() * 100) + 1).build())
                     .collection(Collection.builder().id((long)(Math.random() * 100) + 1).build())
@@ -41,16 +41,16 @@ public class NftSaleRepositoryTests {
                     .seller_account(Account.builder().id((long)(Math.random() * 200) + 1).build())
                     .winner_account(Account.builder().id((long)(Math.random() * 200) + 1).build())
                     .build();
-            nftSales.addPaymentSet(Payment.NONE);
-            if (nftSales.getContract_address() != null) {
-                if (i < 50) nftSales.addPaymentSet(Payment.ETH);
-                else nftSales.addPaymentSet(Payment.WETH);
+            nftSale.addPaymentSet(Payment.NONE);
+            if (nftSale.getContract_address() != null) {
+                if (i < 50) nftSale.addPaymentSet(Payment.ETH);
+                else nftSale.addPaymentSet(Payment.WETH);
             }
-            nftSales.addAuctionSet(Auction.DUTCH);
-            if (i > 30) nftSales.addAuctionSet(Auction.ENGLISH);
-            if (i > 60) nftSales.addAuctionSet(Auction.MIN_PRICE);
+            nftSale.addAuctionSet(Auction.DUTCH);
+            if (i > 30) nftSale.addAuctionSet(Auction.ENGLISH);
+            if (i > 60) nftSale.addAuctionSet(Auction.MIN_PRICE);
 
-            nftSalesRepository.save(nftSales);
+            nftSalesRepository.save(nftSale);
         });
     }
 
