@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @ToString(exclude = {"owner"})
-public class Assets extends BaseEntity {
+public class Asset extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +33,6 @@ public class Assets extends BaseEntity {
 
     // 소유자 ID (Accounts)
     @ManyToOne(fetch = FetchType.LAZY)
-    private Accounts owner;
+    private Account owner;
 
 }

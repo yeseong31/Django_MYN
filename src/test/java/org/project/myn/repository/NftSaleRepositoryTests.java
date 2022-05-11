@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
 import java.util.stream.IntStream;
 
 @SpringBootTest
-public class NftSalesRepositoryTests {
+public class NftSaleRepositoryTests {
 
     @Autowired
-    private NftSalesRepository nftSalesRepository;
+    private NftSaleRepository nftSalesRepository;
 
     @Test
     public void insertDummies() {
@@ -31,15 +31,15 @@ public class NftSalesRepositoryTests {
                 e.printStackTrace();
             }
 
-            NftSales nftSales = NftSales.builder()
+            NftSale nftSales = NftSale.builder()
                     .time(LocalDateTime.now())
-                    .asset(Assets.builder().id((long)(Math.random() * 100) + 1).build())
-                    .collection(Collections.builder().id((long)(Math.random() * 100) + 1).build())
+                    .asset(Asset.builder().id((long)(Math.random() * 100) + 1).build())
+                    .collection(Collection.builder().id((long)(Math.random() * 100) + 1).build())
                     .contract_address(sha_address)
                     .quantity((long)(Math.random() * 10) + 1)
                     .total_price(Math.random())
-                    .seller_account(Accounts.builder().id((long)(Math.random() * 200) + 1).build())
-                    .winner_account(Accounts.builder().id((long)(Math.random() * 200) + 1).build())
+                    .seller_account(Account.builder().id((long)(Math.random() * 200) + 1).build())
+                    .winner_account(Account.builder().id((long)(Math.random() * 200) + 1).build())
                     .build();
             nftSales.addPaymentSet(Payment.NONE);
             if (nftSales.getContract_address() != null) {

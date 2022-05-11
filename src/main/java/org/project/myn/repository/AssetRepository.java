@@ -1,8 +1,8 @@
 package org.project.myn.repository;
 
-import org.project.myn.entity.AssetsImage;
+import org.project.myn.entity.Asset;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
-public interface AssetsImageRepository extends JpaRepository<AssetsImage, Long>, QuerydslPredicateExecutor<AssetsImage> {
+public interface AssetRepository extends JpaRepository<Asset, Long>, QuerydslPredicateExecutor<Asset> {
 }

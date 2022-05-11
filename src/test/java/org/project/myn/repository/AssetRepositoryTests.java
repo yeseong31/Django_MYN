@@ -1,29 +1,28 @@
 package org.project.myn.repository;
 
 import org.junit.jupiter.api.Test;
-import org.project.myn.entity.Accounts;
-import org.project.myn.entity.Assets;
-import org.project.myn.entity.AssetsImage;
+import org.project.myn.entity.Account;
+import org.project.myn.entity.Asset;
+import org.project.myn.entity.AssetImage;
 import org.project.myn.security.SHA256;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
 
 @SpringBootTest
-public class AssetsRepositoryTests {
+public class AssetRepositoryTests {
 
     @Autowired
-    private AssetsRepository assetsRepository;
+    private AssetRepository assetsRepository;
 
     @Autowired
-    private AssetsImageRepository assetsImageRepository;
+    private AssetImageRepository assetsImageRepository;
 
     @Test
     public void insertDummies() {
@@ -47,12 +46,12 @@ public class AssetsRepositoryTests {
 
             int n = (int) (Math.random() * 200) + 1;
 
-            Assets assets = Assets.builder()
+            Asset assets = Asset.builder()
                     .name(name)
                     .description("description..." + i)
                     .contract_date(randomDate)
                     .url("https://opensea.io/assets/" + sha_url)
-                    .owner(Accounts.builder().id((long) n).build())
+                    .owner(Account.builder().id((long) n).build())
                     .build();
             System.out.println("————————————————————————————————————————");
             assetsRepository.save(assets);
@@ -66,7 +65,7 @@ public class AssetsRepositoryTests {
                 e.printStackTrace();
             }
 
-            AssetsImage assetsImage = AssetsImage.builder()
+            AssetImage assetsImage = AssetImage.builder()
                     .uuid(UUID.randomUUID().toString())
                     .assets(assets)
                     .name("image" + i)

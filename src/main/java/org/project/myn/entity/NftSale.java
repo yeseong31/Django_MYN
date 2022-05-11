@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @ToString(exclude = {"seller_account", "winner_account", "from_account", "to_account", "collection"})
-public class NftSales extends BaseEntity {
+public class NftSale extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,27 +43,27 @@ public class NftSales extends BaseEntity {
 
     // 판매자계정
     @ManyToOne(fetch = FetchType.LAZY)
-    private Accounts seller_account;
+    private Account seller_account;
 
     // 구매자 계정
     @ManyToOne(fetch = FetchType.LAZY)
-    private Accounts winner_account;
+    private Account winner_account;
 
     // Transfer_from
     @ManyToOne(fetch = FetchType.LAZY)
-    private Accounts from_account;
+    private Account from_account;
 
     // Transfer_to
     @ManyToOne(fetch = FetchType.LAZY)
-    private Accounts to_account;
+    private Account to_account;
 
     // 자산 ID
     @ManyToOne(fetch = FetchType.LAZY)
-    private Assets asset;
+    private Asset asset;
 
     // 컬렉션 ID
     @ManyToOne(fetch = FetchType.LAZY)
-    private Collections collection;
+    private Collection collection;
 
     public void addPaymentSet(Payment payment) { payment_symbol.add(payment); }
     public void addAuctionSet(Auction auction) { auction_type.add(auction); }

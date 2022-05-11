@@ -3,7 +3,7 @@ package org.project.myn.repository;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.junit.jupiter.api.Test;
-import org.project.myn.entity.Collections;
+import org.project.myn.entity.Collection;
 import org.project.myn.entity.QCollections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,16 +16,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.stream.IntStream;
 
 @SpringBootTest
-public class CollectionsRepositoryTests {
+public class CollectionRepositoryTests {
 
     @Autowired
-    private CollectionsRepository collectionsRepository;
+    private CollectionRepository collectionsRepository;
 
     @Test
     public void insertDummies() {
         IntStream.rangeClosed(1, 100).forEach(i -> {
             String slug = "slug" + i;
-            Collections collections = Collections.builder()
+            Collection collections = Collection.builder()
                     .name("name" + i)
                     .slug(slug)
                     .url("https://opensea.io/collection/" + slug)
@@ -54,7 +54,7 @@ public class CollectionsRepositoryTests {
         builder.and(expAll);
         builder.and(qCollections.id.gt(0L));
 
-        Page<Collections> result = collectionsRepository.findAll(builder, pageable);
+        Page<Collection> result = collectionsRepository.findAll(builder, pageable);
         result.stream().forEach(System.out::println);
     }
 

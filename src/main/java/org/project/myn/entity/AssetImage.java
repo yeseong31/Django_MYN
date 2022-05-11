@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @ToString(exclude = "assets")
-public class AssetsImage extends BaseEntity {
+public class AssetImage extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +21,6 @@ public class AssetsImage extends BaseEntity {
     private String uuid;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Assets assets;
+    private Asset assets;
 
 }

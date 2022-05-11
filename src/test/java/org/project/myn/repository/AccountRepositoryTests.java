@@ -3,8 +3,8 @@ package org.project.myn.repository;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.junit.jupiter.api.Test;
-import org.project.myn.entity.Accounts;
-import org.project.myn.entity.AccountsRole;
+import org.project.myn.entity.Account;
+import org.project.myn.entity.AccountRole;
 import org.project.myn.entity.QAccounts;
 import org.project.myn.security.SHA256;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +20,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.stream.IntStream;
 
 @SpringBootTest
-public class AccountsRepositoryTests {
+public class AccountRepositoryTests {
 
     @Autowired
-    private AccountsRepository accountsRepository;
+    private AccountRepository accountsRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -42,16 +42,16 @@ public class AccountsRepositoryTests {
                 e.printStackTrace();
             }
 
-            Accounts accounts = Accounts.builder()
+            Account accounts = Account.builder()
                     .username("test" + i)
                     .address(sha_address)
                     .password(passwordEncoder.encode("test" + i))
                     .email("test" + i + "@test.com")
                     .build();
 
-            accounts.addMemberRole(AccountsRole.USER);
-            if (i > 50) accounts.addMemberRole(AccountsRole.MEMBER);
-            if (i > 180) accounts.addMemberRole(AccountsRole.ADMIN);
+            accounts.addMemberRole(AccountRole.USER);
+            if (i > 50) accounts.addMemberRole(AccountRole.MEMBER);
+            if (i > 180) accounts.addMemberRole(AccountRole.ADMIN);
 
             accountsRepository.save(accounts);
         });
@@ -79,7 +79,7 @@ public class AccountsRepositoryTests {
         builder.and(expression);
 
         // 5) QuerydslPredicateExcutor 인터페이스의 findAll() 등의 메서드를 사용할 수 있음
-        Page<Accounts> result = accountsRepository.findAll(builder, pageable);
+        Page<Account> result = accountsRepository.findAll(builder, pageable);
 
         result.stream().forEach(System.out::println);
     }

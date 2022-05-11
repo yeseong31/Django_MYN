@@ -1,6 +1,6 @@
 package org.project.myn.entity;
 
-public enum AccountsRole {
+public enum AccountRole {
 
     USER, MEMBER, ADMIN
 

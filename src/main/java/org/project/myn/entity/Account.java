@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @ToString
-public class Accounts extends BaseEntity {
+public class Account extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,9 +37,9 @@ public class Accounts extends BaseEntity {
     // ClubMemberRole 타입값을 처리하기 위해 Set<ClubMemberRole> 타입 추가
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
-    private Set<AccountsRole> roleSet = new HashSet<>();
+    private Set<AccountRole> roleSet = new HashSet<>();
 
-    public void addMemberRole(AccountsRole role) {
+    public void addMemberRole(AccountRole role) {
         roleSet.add(role);
     }
 
