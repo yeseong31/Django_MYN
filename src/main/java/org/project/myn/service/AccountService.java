@@ -5,14 +5,14 @@ import org.project.myn.entity.Account;
 
 public interface AccountService {
 
-    default Account dtoToEntity(Account account) {
+    default Account dtoToEntity(AccountDTO accountDTO) {
         return Account.builder()
-                .id(account.getId())
-                .username(account.getUsername())
-                .address(account.getAddress())
-                .email(account.getEmail())
-                .fromSocial(account.isFromSocial())
-                .password(account.getPassword())
+                .id(accountDTO.getId())
+                .username(accountDTO.getUsername())
+                .address(accountDTO.getAddress())
+                .email(accountDTO.getEmail())
+                .fromSocial(accountDTO.isFromSocial())
+                .password(accountDTO.getPassword())
                 .build();
     }
 
