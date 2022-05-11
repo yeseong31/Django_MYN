@@ -21,6 +21,6 @@ public class AssetImage extends BaseEntity {
     private String uuid;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Asset assets;
+    private Asset asset;
 
 }
