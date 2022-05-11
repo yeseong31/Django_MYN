@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -23,6 +24,8 @@ public class AssetDTO {
     private String url;
 
     @Builder.Default
+    private List<AssetImageDTO> imageDTOList = new ArrayList<>();
+
     private AccountDTO accountDTO = new AccountDTO();
 
     private LocalDateTime regDate, modDate;
