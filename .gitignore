@@ -39,3 +39,4 @@ out/
 **/*.properties
 **/*.csv
 /SECRET/*
+/.github/*
