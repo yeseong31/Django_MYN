@@ -15,7 +15,7 @@ public class NftSaleRepositoryTests {
 
     @Autowired
     private NftSaleRepository nftSalesRepository;
-/*
+
     @Test
     public void insertDummies() {
         IntStream.rangeClosed(1, 500).forEach(i -> {
@@ -53,5 +53,5 @@ public class NftSaleRepositoryTests {
             nftSalesRepository.save(nftSale);
         });
     }
-*/
+
 }
