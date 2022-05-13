@@ -11,6 +11,7 @@
 ![MariaDB: Version](https://img.shields.io/badge/MariaDB-003545.svg?logo=MariaDB&logoColor=white)
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?logo=intellij-idea&logoColor=white)
 ![Amazon AWS](https://img.shields.io/badge/AmazonAWS-232F3E.svg?logo=amazon-aws&logoColor=white)
+![Travis CI](https://img.shields.io/badge/TravisCI-3EAAAF.svg?logo=travis-ci&logoColor=white)
 
 ## 🔧 Tools
 [![Notion](https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=notion&logoColor=white)](https://www.notion.so/Backend-3e5c6c7e856e4014a6eedf50bce790a1)
