@@ -34,6 +34,7 @@ public class CollectionRepositoryTests {
         });
     }
 */
+/*
     // Querydsl --------------------------------------------------
     // 다중 항목 검색 테스트: collections의 name 혹은 slug에 '1'이 포함되어 있는 경우를 확인
     @Transactional
@@ -57,5 +58,5 @@ public class CollectionRepositoryTests {
         Page<Collection> result = collectionsRepository.findAll(builder, pageable);
         result.stream().forEach(System.out::println);
     }
-
+*/
 }
