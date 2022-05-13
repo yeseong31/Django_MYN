@@ -57,6 +57,7 @@ public class AccountRepositoryTests {
         });
     }
 */
+/*
     // Querydsl --------------------------------------------------
     // 단일 항목 검색 테스트: username에 '1'이 포함되어 있는 Accounts 확인
     @Transactional
@@ -83,6 +84,6 @@ public class AccountRepositoryTests {
 
         result.stream().forEach(System.out::println);
     }
-
+*/
 
 }
