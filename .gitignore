@@ -37,6 +37,8 @@ out/
 .vscode/
 
 **/*.properties
+!**/src/main/resources/application.properties
+
 **/*.csv
 /SECRET/*
 /.github/*
