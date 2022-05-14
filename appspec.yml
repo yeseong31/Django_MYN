@@ -1,0 +1,10 @@
+# version: CodeDeploy 버전. '프로젝트 버전'을 의미하지 않으므로 반드시 0.0으로 설정
+# source: CodeDeploy에서 전달해 준 파일 중 destination으로 이동시킬 대상(전체 파일)
+# destination: source에서 지정된 파일을 받을 위치
+
+version: 0.0
+os: linux
+files:
+  - source:  /
+    destination: /home/ec2-user/app/step2/zip/
+    overwrite: yes
