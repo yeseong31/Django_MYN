@@ -43,3 +43,8 @@
 ![image](https://user-images.githubusercontent.com/66625672/167404057-d055ec6b-3a29-4bd6-b056-07f497883d3f.png)
 
 - 데이터베이스 설계와 관련된 내용과 샘플 데이터에 대해서는  [이곳](https://docs.timescale.com/timescaledb/latest/tutorials/analyze-nft-data/nft-schema-ingestion/#ingest-nft-data)을 참고
+
+---
+
+## 개발 진행 상황
+- 개발 진행 상황은 [Wiki](https://github.com/yeseong31/NFT_backend/wiki)를 참고해 주세요.
