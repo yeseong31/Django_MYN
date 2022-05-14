@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk8
+  - openjdk11
 
 # 어느 branch에 push될 때 Travis CI를 실행할지 결정
 branches:
