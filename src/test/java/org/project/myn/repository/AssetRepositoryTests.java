@@ -23,7 +23,7 @@ public class AssetRepositoryTests {
 
     @Autowired
     private AssetImageRepository assetsImageRepository;
-
+/*
     @Test
     public void insertDummies() {
         // contract_date 값은 임의의 날짜로 설정
@@ -75,5 +75,5 @@ public class AssetRepositoryTests {
             System.out.println("————————————————————————————————————————");
         });
     }
-
+*/
 }

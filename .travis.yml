@@ -1,0 +1,57 @@
+language: java
+jdk:
+  - openjdk11
+
+# 어느 branch에 push될 때 Travis CI를 실행할지 결정
+branches:
+  only:
+    - master
+
+# gradlew에 대항 실행 권한을 추가
+before_install:
+  - chmod +x ./gradlew
+
+# Travis CI 서버의 Home
+# Gradle을 통해 의존성을 받으면 이를 해당 디렉터리에 cache하여 같은 의존성은 다음 배포 때부터 다시 받지 않도록 설정
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
+# master 브랜치에 Push되었을 때 수행하는 명령어
+# 여기에서는 프로젝트 내부에 둔 gradlew 파일을 통해 clean & build를 수행
+script: "./gradlew clean build"
+
+# Travis CI에서 빌드하여 만든 Jar 파일을 S3에 올릴 수 있도록 하는 코드를 추가
+before_deploy:
+  - zip -r myn *
+  - mkdir -p deploy
+  - mv myn.zip deploy/myn.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY        # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY    # Travis repo settings에 설정된 값
+    bucket: myn-springboot-build          # S3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private        # zip 파일 접근을 private으로
+    local_dir: deploy   # before_deploy에서 생성한 디렉토리
+    wait-until-deployed: true
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY      # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY  # Travis repo settings에 설정된 값
+    bucket: myn-springboot-build        # S3 버킷
+    key: myn.zip                        # 빌드 파일을 압축해서 전달
+    bundle_type: zip                    # 압축 확장자
+    application: myn-application                    # 웹 콘솔에서 등록한 CodeDeploy 애플리케이션
+    deployment_group: myn-application-group         # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
+    region: ap-northeast-2
+    wait-until-deployed: true
+
+
+# CI 실행 완료 시 메일로 알람
+notifications:
+  email:
+    recipients:
+      - yeseong31@naver.com

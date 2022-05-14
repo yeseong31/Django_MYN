@@ -27,7 +27,7 @@ public class AccountRepositoryTests {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+/*
     @Test
     public void insertDummies() {
         // USER: 1~50 | USER&MANAGER: 51~180 | USER&MANAGER&ADMIN: 180~100
@@ -56,7 +56,8 @@ public class AccountRepositoryTests {
             accountsRepository.save(account);
         });
     }
-
+*/
+/*
     // Querydsl --------------------------------------------------
     // 단일 항목 검색 테스트: username에 '1'이 포함되어 있는 Accounts 확인
     @Transactional
@@ -83,6 +84,6 @@ public class AccountRepositoryTests {
 
         result.stream().forEach(System.out::println);
     }
-
+*/
 
 }
