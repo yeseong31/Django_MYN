@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<h1>TEST</h1>
+<th:block th:replace="~{/layout/basic::setContent(~{this::content})}">
 
-</body>
-</html>
+    <th:block th:fragment="content">
+
+        <h1>TEST</h1>
+
+    </th:block>
+
+</th:block>
