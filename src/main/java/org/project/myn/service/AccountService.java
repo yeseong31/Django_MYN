@@ -5,6 +5,15 @@ import org.project.myn.entity.Account;
 
 public interface AccountService {
 
+    // 등록
+    Long register(AccountDTO accountDTO);
+    // 조회
+    AccountDTO get(Long id);
+    // 수정
+    void modify(AccountDTO accountDTO);
+    // 삭제
+    void remove(Long id);
+
     default Account dtoToEntity(AccountDTO accountDTO) {
         return Account.builder()
                 .id(accountDTO.getId())
