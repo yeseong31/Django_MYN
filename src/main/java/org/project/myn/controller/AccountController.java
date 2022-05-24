@@ -13,7 +13,8 @@ public class AccountController {
     @GetMapping({"/", "/list"})
     public String list() {
         log.info("list..........");
-        return "/myn/account/list";
+//        return "/myn/account/list";
+        return "myn/account/list";
     }
 
 }
