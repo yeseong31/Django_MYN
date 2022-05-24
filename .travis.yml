@@ -43,8 +43,8 @@ deploy:
     bucket: myn-bucket              # S3 버킷
     key: myn.zip                    # 빌드 파일을 압축해서 전달
     bundle_type: zip
-    application: myn-codedeploy     # CodeDeploy 애플리케이션 이름
-    deployment_group: myn-codedeploy-group  # CodeDeploy 애플리케이션 그룹 이름
+    application: myn-application     # CodeDeploy 애플리케이션 이름
+    deployment_group: myn-application-group  # CodeDeploy 애플리케이션 그룹 이름
     region: ap-northeast-2
     wait-until-deployed: true
 
