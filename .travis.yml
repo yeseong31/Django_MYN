@@ -37,16 +37,16 @@ deploy:
     local_dir: deploy   # before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
 
-  - provider: codedeploy
-    access_key_id: $AWS_ACCESS_KEY        # Travis repo settings에 설정된 값
-    secret_access_key: $AWS_SECRET_KEY    # Travis repo settings에 설정된 값
-    bucket: myn-bucket              # S3 버킷
-    key: myn.zip                    # 빌드 파일을 압축해서 전달
-    bundle_type: zip
-    application: myn-codedeploy     # CodeDeploy 애플리케이션 이름
-    deployment_group: myn-codedeploy-group  # CodeDeploy 애플리케이션 그룹 이름
-    region: ap-northeast-2
-    wait-until-deployed: true
+#  - provider: codedeploy
+#    access_key_id: $AWS_ACCESS_KEY        # Travis repo settings에 설정된 값
+#    secret_access_key: $AWS_SECRET_KEY    # Travis repo settings에 설정된 값
+#    bucket: myn-bucket              # S3 버킷
+#    key: myn.zip                    # 빌드 파일을 압축해서 전달
+#    bundle_type: zip
+#    application: myn-codedeploy     # CodeDeploy 애플리케이션 이름
+#    deployment_group: myn-codedeploy-group  # CodeDeploy 애플리케이션 그룹 이름
+#    region: ap-northeast-2
+#    wait-until-deployed: true
 
 # CI 실행 완료 시 메일로 알람
 #notifications:
