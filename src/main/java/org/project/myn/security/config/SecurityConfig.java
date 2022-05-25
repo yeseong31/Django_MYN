@@ -15,12 +15,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user1")
-                .password("$2a$10$eQh0nq.Z1WAzkCbnlxFR2eLNl7M1aBr511Xj7UVVi.THIruAAZRJ6")
-                .roles("USER");
-    }
+// -------------------- ClubUserDetailsService를 사용하기 위해 주석 처리 --------------------
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication().withUser("user1")
+//                .password("$2a$10$eQh0nq.Z1WAzkCbnlxFR2eLNl7M1aBr511Xj7UVVi.THIruAAZRJ6")
+//                .roles("USER");
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
