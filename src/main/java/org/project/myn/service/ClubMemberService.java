@@ -1,19 +1,19 @@
 package org.project.myn.service;
 
-import org.project.myn.dto.UserDTO;
-import org.project.myn.entity.User;
+import org.project.myn.dto.ClubMemberDTO;
+import org.project.myn.entity.ClubMember;
 
-public interface UserService {
+public interface ClubMemberService {
     // 등록
-    String register(UserDTO dto);
+    String register(ClubMemberDTO dto);
     // 조회
 
     //수정
 
     // 삭제
 
-    default User dtoToEntity(UserDTO dto) {
-        return User.builder()
+    default ClubMember dtoToEntity(ClubMemberDTO dto) {
+        return ClubMember.builder()
                 .email(dto.getEmail())
                 .password(dto.getPassword())
                 .address(dto.getAddress())
@@ -22,8 +22,8 @@ public interface UserService {
                 .build();
     }
 
-    default UserDTO entityToDTO(User user) {
-        return UserDTO.builder()
+    default ClubMemberDTO entityToDTO(ClubMember user) {
+        return ClubMemberDTO.builder()
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .address(user.getAddress())

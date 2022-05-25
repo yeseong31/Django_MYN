@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @ToString
-public class User extends BaseEntity {
+public class ClubMember extends BaseEntity {
 
     @Id
     private String email;
@@ -20,7 +20,6 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
     private String phoneNum;
 
     private String address;
@@ -29,9 +28,9 @@ public class User extends BaseEntity {
 
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
-    private Set<UserRole> roleSet = new HashSet<>();
+    private Set<ClubMemberRole> roleSet = new HashSet<>();
 
-    public void addMemberRole(UserRole role) {
+    public void addMemberRole(ClubMemberRole role) {
         roleSet.add(role);
     }
 
