@@ -34,4 +34,7 @@ public class ClubMember extends BaseEntity {
         roleSet.add(role);
     }
 
+    public void changePassword(String password) { this.password = password; }
+    public void changeAddress(String address) { this.address = address; }
+
 }

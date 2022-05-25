@@ -16,7 +16,7 @@ public class ClubMemberDTO {
     private String email;
 
     private String password;
-    private String phone;
+    private String phoneNum;
     private String address;
     private boolean fromSocial;
 
