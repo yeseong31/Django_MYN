@@ -16,12 +16,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }
 
     @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("user1")
+                .password("$2a$10$eQh0nq.Z1WAzkCbnlxFR2eLNl7M1aBr511Xj7UVVi.THIruAAZRJ6")
+                .roles("USER");
+    }
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests()
-                .antMatchers("/account/list").permitAll();
+        http
+                .csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
+                    .authorizeRequests()
+                    .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
+                    .antMatchers("/sample/all").permitAll()
+                    .antMatchers("/sample/member").hasRole("USER")
+                .and()
+                    .logout()
+                        .logoutSuccessUrl("/");
+
+        // 인가 및 인증에 문제가 있을 때 로그인 화면 출력
         http.formLogin();
-        http.csrf().disable();
 
     }
 }
