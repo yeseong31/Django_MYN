@@ -1,6 +1,7 @@
 package org.project.myn.security.config;
 
 import lombok.extern.log4j.Log4j2;
+import org.project.myn.security.handler.ClubLoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -41,7 +42,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 인가 및 인증에 문제가 있을 때 로그인 화면 출력
         http.formLogin();
         // 소셜 로그인
-        http.oauth2Login();
+        http.oauth2Login().successHandler(successHandler());
 
+    }
+
+    @Bean
+    public ClubLoginSuccessHandler successHandler() {
+        return new ClubLoginSuccessHandler(passwordEncoder());
     }
 }
