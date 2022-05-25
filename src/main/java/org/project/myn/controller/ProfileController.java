@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.List;
 
+// 무중단 배포 시 8081, 8082 포트를 결정하는 API
 @RequiredArgsConstructor
 @RestController
 public class ProfileController {
