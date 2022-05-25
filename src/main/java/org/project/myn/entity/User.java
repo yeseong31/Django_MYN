@@ -2,10 +2,7 @@ package org.project.myn.entity;
 
 import lombok.*;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,11 +15,15 @@ import java.util.Set;
 public class User extends BaseEntity {
 
     @Id
-    private String userid;
-
     private String email;
 
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private String phoneNum;
+
+    private String address;
 
     private boolean fromSocial;
 

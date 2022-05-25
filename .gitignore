@@ -41,4 +41,7 @@ out/
 
 **/*.csv
 /SECRET/*
+
+**/src/test/java/org/project/myn/**/*.java
+
 /.github/*

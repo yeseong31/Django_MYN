@@ -11,13 +11,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CollectionDTO {
+public class UserDTO {
 
-    private Long id;
+    private String email;
 
-    private String slug;
-    private String name;
-    private String url;
+    private String password;
+    private String phone;
+    private String address;
+    private boolean fromSocial;
 
     private LocalDateTime regDate, modDate;
 
