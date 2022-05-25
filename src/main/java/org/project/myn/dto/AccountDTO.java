@@ -15,12 +15,12 @@ public class AccountDTO {
 
     private Long id;
 
-    private String username;
     private String address;
-    private String email;
-    private String password;
-    private boolean fromSocial;
+    private String username;
 
     private LocalDateTime regDate, modDate;
+
+    // 사용자 이메일(아이디)
+    private String email;
 
 }

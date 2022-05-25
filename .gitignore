@@ -39,9 +39,9 @@ out/
 **/*.properties
 #!**/src/main/resources/application.properties
 
-# 테스트 데이터 예시(OpenSea 데이터)
 **/*.csv
-# 개인 정보(ppk 등)
 /SECRET/*
-# 테스트 코드
+
 **/src/test/java/org/project/myn/**/*.java
+
+/.github/*

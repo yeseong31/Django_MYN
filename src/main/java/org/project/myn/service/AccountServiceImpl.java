@@ -7,43 +7,50 @@ import org.project.myn.entity.Account;
 import org.project.myn.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-@Log4j2
 @RequiredArgsConstructor
+@Log4j2
 public class AccountServiceImpl implements AccountService {
 
-    private final AccountRepository repository;
+    private final AccountRepository accountRepository;
 
     @Override
-    public Long register(AccountDTO accountDTO) {
-        Account account = dtoToEntity(accountDTO);
-        repository.save(account);
-        return account.getId();
+    public String register(AccountDTO dto) {
+        Account account = dtoToEntity(dto);
+        accountRepository.save(account);
+        return account.getClubMember().getEmail();
     }
 
     @Override
     public AccountDTO get(Long id) {
-        Optional<Account> result = repository.findById(id);
+        Optional<Account> result = accountRepository.findAccountWithEmail(id);
         return result.map(this::entityToDto).orElse(null);
     }
 
     @Override
-    public void modify(AccountDTO accountDTO) {
-        Optional<Account> result = repository.findById(accountDTO.getId());
-
+    public void modify(AccountDTO dto) {
+        Long id = dto.getId();
+        Optional<Account> result = accountRepository.findById(id);
         if (result.isPresent()) {
-            Account entity = result.get();
-
-            entity.changeUsername(accountDTO.getUsername());
-
-            repository.save(entity);
+            Account account = result.get();
+            account.changeUsername(dto.getUsername());
+            accountRepository.save(account);
         }
     }
 
     @Override
     public void remove(Long id) {
-        repository.deleteById(id);
+        accountRepository.deleteById(id);
     }
+
+    @Override
+    public List<AccountDTO> getAllWithUsername(String username) {
+        List<Account> accountList = accountRepository.getList(username);
+        return accountList.stream().map(this::entityToDto).collect(Collectors.toList());
+    }
+
 }
