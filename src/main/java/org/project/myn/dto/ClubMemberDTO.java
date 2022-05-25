@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UserDTO {
+public class ClubMemberDTO {
 
     private String email;
 

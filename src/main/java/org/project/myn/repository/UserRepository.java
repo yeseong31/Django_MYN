@@ -1,7 +1,0 @@
-package org.project.myn.repository;
-
-import org.project.myn.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface UserRepository extends JpaRepository<User, String> {
-}
