@@ -22,7 +22,7 @@ public interface ClubMemberService {
                 .build();
     }
 
-    default ClubMemberDTO entityToDTO(ClubMember user) {
+    default ClubMemberDTO entityToDto(ClubMember user) {
         return ClubMemberDTO.builder()
                 .email(user.getEmail())
                 .password(user.getPassword())
