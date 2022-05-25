@@ -20,7 +20,6 @@ public class ClubMember extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
     private String phoneNum;
 
     private String address;
