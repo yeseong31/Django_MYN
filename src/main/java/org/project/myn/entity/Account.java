@@ -22,4 +22,10 @@ public class Account extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     private ClubMember clubMember;
 
+    public void setClubMember(ClubMember clubMember) {
+        this.clubMember = clubMember;
+    }
+
+    public void changeUsername(String username) { this.username = username; }
+
 }
