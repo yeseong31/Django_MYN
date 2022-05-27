@@ -70,7 +70,9 @@ public class ClubMemberServiceImpl implements ClubMemberService {
         Optional<ClubMember> checkClubMember = clubMemberRepository.findByEmail(email);
         // 권한을 삭제할 ClubMember가 없다면 그대로 종료
         if (checkClubMember.isEmpty()) return;
+
         ClubMember clubMember = checkClubMember.get();
+        clubMember.deleteMemberRole(ClubMemberRole.MEMBER);
         clubMember.deleteMemberRole(ClubMemberRole.USER);
 
         // ClubMember 삭제
