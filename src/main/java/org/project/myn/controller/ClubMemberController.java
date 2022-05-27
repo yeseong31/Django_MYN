@@ -3,32 +3,37 @@ package org.project.myn.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.project.myn.dto.ClubMemberDTO;
-import org.project.myn.repository.ClubMemberRepository;
 import org.project.myn.service.ClubMemberService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Log4j2
-@RequestMapping("/club/")
+@RequestMapping("/clubs")
 @RequiredArgsConstructor
 public class ClubMemberController {
 
-    private final ClubMemberService service;
+    private final ClubMemberService clubMemberService;
 
+    // 사용자 정보 등록
     @PostMapping(value = "")
     public ResponseEntity<String> register(@RequestBody ClubMemberDTO clubMemberDTO) {
         log.info("-------------------- register --------------------");
         log.info(clubMemberDTO);
 
-        String email = service.register(clubMemberDTO);
-        if (email.isEmpty())
-            return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+        String email = clubMemberService.register(clubMemberDTO);
         return new ResponseEntity<>(email, HttpStatus.OK);
+    }
+
+    // 사용자 정보 조회
+    @GetMapping(value = "/read", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ClubMemberDTO> get(String email) {
+        log.info("-------------------- read --------------------");
+        log.info(email);
+
+        return new ResponseEntity<>(clubMemberService.get(email), HttpStatus.OK);
     }
 
 }
