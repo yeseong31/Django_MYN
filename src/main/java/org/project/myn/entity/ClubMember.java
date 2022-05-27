@@ -38,5 +38,6 @@ public class ClubMember extends BaseEntity {
 
     public void changePassword(String password) { this.password = password; }
     public void changeAddress(String address) { this.address = address; }
+    public void changePhoneNum(String phoneNum) { this.phoneNum = phoneNum; }
 
 }

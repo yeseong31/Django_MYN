@@ -58,6 +58,7 @@ public class ClubMemberServiceImpl implements ClubMemberService {
             ClubMember clubMember = result.get();
             clubMember.changeAddress(dto.getAddress());
             clubMember.changePassword(passwordEncoder.encode(dto.getPassword()));
+            clubMember.changePhoneNum(dto.getPhoneNum());
             clubMemberRepository.save(clubMember);
         }
     }
