@@ -29,7 +29,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .csrf().disable()
-                .headers().frameOptions().disable();
+
+                // Spring Security HSTS
+                .headers()
+                    .httpStrictTransportSecurity()
+                        .maxAgeInSeconds(31536000)    // 브라우저가 HSTS 정책을 적용할 시간 설정
+                        .includeSubDomains(true)      // 도메인의 서브 도메인에도 HSTS 설정을 적용
+                        .preload(true);               // HSTS 헤더가 없더라도 HTTP 요청을 HTTPS로 강제 변환하여 전송함
+
 //                .and()
 //                    .authorizeRequests()
 //                    .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
