@@ -11,15 +11,16 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ClubMemberDTO {
+public class AccountDTO {
 
-    private String email;
+    private Long id;
 
-    private String password;
-    private String phoneNum;
     private String address;
-    private boolean fromSocial;
+    private String username;
 
     private LocalDateTime regDate, modDate;
+
+    // 사용자 이메일(아이디)
+    private String email;
 
 }

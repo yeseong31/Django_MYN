@@ -73,7 +73,7 @@ public class ClubOAuth2UserDetailsService extends DefaultOAuth2UserService {
     private ClubMember saveSocialMember(String email) {
 
         // 기존에 동일한 이메일로 가입한 회원이 있다면 조회만 수행
-        Optional<ClubMember> result = repository.findByEmail(email, true);
+        Optional<ClubMember> result = repository.findByEmailWithSocial(email, true);
         if (result.isPresent()) {
             return result.get();
         }

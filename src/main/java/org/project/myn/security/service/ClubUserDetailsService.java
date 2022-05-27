@@ -25,7 +25,7 @@ public class ClubUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("ClubUserDetailsService loadUserByUsername " + username);
 
-        Optional<ClubMember> result = clubMemberRepository.findByEmail(username, false);
+        Optional<ClubMember> result = clubMemberRepository.findByEmailWithSocial(username, false);
 
         // 데이터베이스 내에 사용자 ID(이메일 or 소셜ID)가 없는 경우
         if (result.isEmpty()) {

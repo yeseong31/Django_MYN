@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,5 +34,10 @@ public class ClubMember extends BaseEntity {
     public void addMemberRole(ClubMemberRole role) {
         roleSet.add(role);
     }
+    public void deleteMemberRole(ClubMemberRole role) { roleSet.remove(role); }
+
+    public void changePassword(String password) { this.password = password; }
+    public void changeAddress(String address) { this.address = address; }
+    public void changePhoneNum(String phoneNum) { this.phoneNum = phoneNum; }
 
 }
