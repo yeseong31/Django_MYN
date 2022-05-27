@@ -10,6 +10,7 @@ import org.project.myn.repository.ClubMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -61,6 +62,7 @@ public class ClubMemberServiceImpl implements ClubMemberService {
         }
     }
 
+    @Transactional
     @Override
     public void delete(String email) {
         // Account 삭제

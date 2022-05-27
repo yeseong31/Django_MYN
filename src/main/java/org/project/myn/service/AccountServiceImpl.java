@@ -9,6 +9,7 @@ import org.project.myn.entity.ClubMemberRole;
 import org.project.myn.repository.AccountRepository;
 import org.project.myn.repository.ClubMemberRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -58,6 +59,7 @@ public class AccountServiceImpl implements AccountService {
         }
     }
 
+    @Transactional
     @Override
     public void remove(Long id) {
         Optional<Account> checkAccount = accountRepository.findById(id);
@@ -66,6 +68,7 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.deleteById(id);
     }
 
+    @Transactional
     @Override
     public void removeByEmail(String email) {
         Optional<Account> checkAccount = accountRepository.findAccountByEmail(email);

@@ -36,4 +36,15 @@ public class ClubMemberController {
         return new ResponseEntity<>(clubMemberService.get(email), HttpStatus.OK);
     }
 
+    // 사용자 이메일을 통해 계정 삭제
+    @DeleteMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> remove(String email) {
+        log.info("-------------------- remove --------------------");
+        log.info(email);
+
+        clubMemberService.delete(email);
+
+        return new ResponseEntity<>("removed", HttpStatus.OK);
+    }
+
 }
