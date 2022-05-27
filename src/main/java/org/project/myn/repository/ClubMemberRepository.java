@@ -15,6 +15,7 @@ public interface ClubMemberRepository extends JpaRepository<ClubMember, String> 
     @Query("select m from ClubMember m where m.fromSocial = :social and m.email = :email")
     Optional<ClubMember> findByEmailWithSocial(@Param("email") String email, @Param("social") boolean social);
 
+    // 사용자 이메일을 확인하여 정보 조회
     @EntityGraph(attributePaths = {"roleSet"}, type = EntityGraph.EntityGraphType.LOAD)
     @Query("select m from ClubMember m where m.email = :email")
     Optional<ClubMember> findByEmail(@Param("email") String email);

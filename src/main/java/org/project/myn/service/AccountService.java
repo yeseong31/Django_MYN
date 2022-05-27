@@ -15,6 +15,7 @@ public interface AccountService {
     void modify(AccountDTO accountDTO);
     // 삭제
     void remove(Long id);
+    void removeByEmail(String email);
 
     // 해당 username을 가지는 사용자 정보 조회
     List<AccountDTO> getAllWithUsername(String username);

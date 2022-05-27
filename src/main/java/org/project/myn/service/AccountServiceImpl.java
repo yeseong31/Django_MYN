@@ -60,7 +60,26 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void remove(Long id) {
+        Optional<Account> checkAccount = accountRepository.findById(id);
+        // 삭제할 Account가 없다면 그대로 종료
+        if (checkAccount.isEmpty()) return;
+
+        Account account = checkAccount.get();
+        Optional<ClubMember> checkClubMember = clubMemberRepository.findByEmail(account.getClubMember().getEmail());
+        // 권한을 삭제할 ClubMember가 없다면 그대로 종료 (웬만해서는 종료가 되지 않음)
+        if (checkClubMember.isEmpty()) return;
+
+        // 권한(MEMBER) 삭제
+        ClubMember clubMember = checkClubMember.get();
+        clubMember.deleteMemberRole(ClubMemberRole.MEMBER);
+        // Account 삭제
         accountRepository.deleteById(id);
+    }
+
+    @Override
+    public void removeByEmail(String email) {
+        Optional<Account> checkAccount = accountRepository.findAccountByEmail(email);
+        checkAccount.ifPresent(account -> remove(account.getId()));
     }
 
     @Override

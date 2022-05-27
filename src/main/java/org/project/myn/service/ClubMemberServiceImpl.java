@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.project.myn.dto.ClubMemberDTO;
 import org.project.myn.entity.ClubMember;
 import org.project.myn.entity.ClubMemberRole;
+import org.project.myn.repository.AccountRepository;
 import org.project.myn.repository.ClubMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +21,7 @@ public class ClubMemberServiceImpl implements ClubMemberService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    private final AccountRepository accountRepository;
     private final ClubMemberRepository clubMemberRepository;
 
     @Override
@@ -61,6 +63,17 @@ public class ClubMemberServiceImpl implements ClubMemberService {
 
     @Override
     public void delete(String email) {
+        // Account 삭제
+        accountRepository.deleteByClubMemberEmail(email);
+
+        // ClubMember Role 삭제
+        Optional<ClubMember> checkClubMember = clubMemberRepository.findByEmail(email);
+        // 권한을 삭제할 ClubMember가 없다면 그대로 종료
+        if (checkClubMember.isEmpty()) return;
+        ClubMember clubMember = checkClubMember.get();
+        clubMember.deleteMemberRole(ClubMemberRole.USER);
+
+        // ClubMember 삭제
         clubMemberRepository.deleteById(email);
     }
 }
