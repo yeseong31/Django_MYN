@@ -8,27 +8,23 @@ import java.util.List;
 
 public interface AccountService {
     // 등록
-    String register(AccountDTO dto);
+    Long register(AccountDTO accountDTO);
     // 조회
     AccountDTO get(Long id);
     //수정
-    void modify(AccountDTO dto);
+    void modify(AccountDTO accountDTO);
     // 삭제
     void remove(Long id);
 
-    // 해당 username을 가지는 모든 사용자
+    // 해당 username을 가지는 사용자 정보 조회
     List<AccountDTO> getAllWithUsername(String username);
 
     default Account dtoToEntity(AccountDTO dto) {
-        ClubMember clubMember = ClubMember.builder()
-                .email(dto.getEmail())
-                .build();
-
         return Account.builder()
                 .id(dto.getId())
                 .username(dto.getUsername())
                 .address(dto.getAddress())
-                .clubMember(clubMember)
+                .clubMember(ClubMember.builder().email(dto.getEmail()).build())
                 .build();
     }
 
