@@ -18,7 +18,7 @@ public class ClubMemberController {
     private final ClubMemberService clubMemberService;
 
     // 사용자 정보 등록
-    @PostMapping(value = "/register")
+    @PostMapping(value = "")
     public ResponseEntity<String> register(@RequestBody ClubMemberDTO clubMemberDTO) {
         log.info("-------------------- register --------------------");
         log.info(clubMemberDTO);
@@ -28,12 +28,12 @@ public class ClubMemberController {
     }
 
     // 사용자 정보 조회
-    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClubMemberDTO> read(String email) {
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ClubMemberDTO> read(@PathVariable("id") Long id) {
         log.info("-------------------- read --------------------");
-        log.info(email);
+        log.info(id);
 
-        return new ResponseEntity<>(clubMemberService.get(email), HttpStatus.OK);
+        return new ResponseEntity<>(clubMemberService.get(id), HttpStatus.OK);
     }
 
     // 사용자 이메일을 통해 계정 삭제

@@ -46,8 +46,8 @@ public class ClubMemberServiceImpl implements ClubMemberService {
     }
 
     @Override
-    public ClubMemberDTO get(String email) {
-        Optional<ClubMember> result = clubMemberRepository.findById(email);
+    public ClubMemberDTO get(Long id) {
+        Optional<ClubMember> result = clubMemberRepository.findById(id);
         return result.map(this::entityToDto).orElse(null);
     }
 

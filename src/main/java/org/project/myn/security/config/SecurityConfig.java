@@ -2,6 +2,7 @@ package org.project.myn.security.config;
 
 import lombok.extern.log4j.Log4j2;
 import org.project.myn.security.filter.ApiCheckFilter;
+import org.project.myn.security.filter.ApiLoginFilter;
 import org.project.myn.security.handler.ClubLoginSuccessHandler;
 import org.project.myn.security.service.ClubUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,18 +30,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http
-                .csrf().disable();
-
         // 인가 및 인증에 문제가 있을 때 로그인 화면 출력
         http.formLogin();
+        // CSRF 비활성화
+        http.csrf().disable();
         // 소셜 로그인
         http.oauth2Login().successHandler(successHandler());
         // 자동 로그인
         http.rememberMe().tokenValiditySeconds(60 * 60 * 24 * 7).userDetailsService(userDetailsService);  // 7days
-
         // ApiFilter 위치 조정
         http.addFilterBefore(apiCheckFilter(), UsernamePasswordAuthenticationFilter.class);
+
+    }
+
+    @Bean
+    public ApiLoginFilter apiLoginFilter() throws Exception {
+        // 로그인은 '/api/login' 경로를 통해 진행
+        ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/login");
+        apiLoginFilter.setAuthenticationManager(authenticationManager());
+        return apiLoginFilter;
     }
 
     @Bean
