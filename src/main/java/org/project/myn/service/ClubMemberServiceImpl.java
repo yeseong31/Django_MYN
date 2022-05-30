@@ -3,6 +3,7 @@ package org.project.myn.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.project.myn.dto.ClubMemberDTO;
+import org.project.myn.entity.Account;
 import org.project.myn.entity.ClubMember;
 import org.project.myn.entity.ClubMemberRole;
 import org.project.myn.repository.AccountRepository;
@@ -22,8 +23,8 @@ public class ClubMemberServiceImpl implements ClubMemberService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private final AccountRepository accountRepository;
     private final ClubMemberRepository clubMemberRepository;
+    private final AccountRepository accountRepository;
 
     @Override
     public String register(ClubMemberDTO dto) {
@@ -65,20 +66,23 @@ public class ClubMemberServiceImpl implements ClubMemberService {
 
     @Transactional
     @Override
-    public void delete(String email) {
+    public void remove(Long id) {
         // Account 삭제
-        accountRepository.deleteByClubMemberEmail(email);
+        accountRepository.deleteByClubMemberId(id);
 
         // ClubMember Role 삭제
-        Optional<ClubMember> checkClubMember = clubMemberRepository.findByEmail(email);
+        Optional<ClubMember> checkClubMember = clubMemberRepository.findById(id);
         // 권한을 삭제할 ClubMember가 없다면 그대로 종료
-        if (checkClubMember.isEmpty()) return;
+        if (checkClubMember.isEmpty()) {
+            System.out.println("존재하지 않는 사용자입니다.");
+            return;
+        }
 
         ClubMember clubMember = checkClubMember.get();
         clubMember.deleteMemberRole(ClubMemberRole.MEMBER);
         clubMember.deleteMemberRole(ClubMemberRole.USER);
 
         // ClubMember 삭제
-        clubMemberRepository.deleteById(email);
+        clubMemberRepository.deleteById(id);
     }
 }

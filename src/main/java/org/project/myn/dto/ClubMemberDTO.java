@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Data
 public class ClubMemberDTO {
 
+    private Long id;
     private String email;
 
     private String password;

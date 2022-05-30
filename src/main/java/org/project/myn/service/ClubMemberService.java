@@ -11,7 +11,7 @@ public interface ClubMemberService {
     //수정
     void modify(ClubMemberDTO dto);
     // 삭제
-    void delete(String email);
+    void remove(Long id);
 
     default ClubMember dtoToEntity(ClubMemberDTO dto) {
         return ClubMember.builder()
