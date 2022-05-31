@@ -3,6 +3,7 @@ package org.project.myn.security.config;
 import lombok.extern.log4j.Log4j2;
 import org.project.myn.security.filter.ApiCheckFilter;
 import org.project.myn.security.filter.ApiLoginFilter;
+import org.project.myn.security.handler.ApiLoginFailHandler;
 import org.project.myn.security.handler.ClubLoginSuccessHandler;
 import org.project.myn.security.service.ClubUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 로그인은 '/api/login' 경로를 통해 진행
         ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/login");
         apiLoginFilter.setAuthenticationManager(authenticationManager());
+        apiLoginFilter.setAuthenticationFailureHandler(new ApiLoginFailHandler());
         return apiLoginFilter;
     }
 
