@@ -6,6 +6,7 @@ import org.project.myn.security.filter.ApiLoginFilter;
 import org.project.myn.security.handler.ApiLoginFailHandler;
 import org.project.myn.security.handler.ClubLoginSuccessHandler;
 import org.project.myn.security.service.ClubUserDetailsService;
+import org.project.myn.security.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public ApiLoginFilter apiLoginFilter() throws Exception {
         // 로그인은 '/api/login' 경로를 통해 진행
-        ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/login");
+        ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/login", jwtUtil());
         apiLoginFilter.setAuthenticationManager(authenticationManager());
         apiLoginFilter.setAuthenticationFailureHandler(new ApiLoginFailHandler());
         return apiLoginFilter;
@@ -62,4 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public ApiCheckFilter apiCheckFilter() {
         return new ApiCheckFilter("/clubs/**/*");
     }
+
+    @Bean
+    public JWTUtil jwtUtil() { return new JWTUtil(); }
 }
