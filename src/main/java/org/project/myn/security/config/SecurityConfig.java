@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private ClubUserDetailsService userDetailsService;
 
+    // 비밀번호 암호화
     @Bean
     PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }
 
@@ -47,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public ApiLoginFilter apiLoginFilter() throws Exception {
-        // 로그인은 '/api/login' 경로를 통해 진행
+        // 로그인은 '/api/login' 경로로 접근하면 동작하도록 함
         ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/login", jwtUtil());
         apiLoginFilter.setAuthenticationManager(authenticationManager());
         apiLoginFilter.setAuthenticationFailureHandler(new ApiLoginFailHandler());
@@ -59,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new ClubLoginSuccessHandler(passwordEncoder());
     }
 
+    // 해당 URL 접근 시 자격 증명 확인
     @Bean
     public ApiCheckFilter apiCheckFilter() {
         return new ApiCheckFilter("/clubs/**/*", jwtUtil());

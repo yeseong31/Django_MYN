@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 @Log4j2
 public class ApiLoginFilter extends AbstractAuthenticationProcessingFilter {
 
-    private JWTUtil jwtUtil;
+    private final JWTUtil jwtUtil;
 
     public ApiLoginFilter(String defaultFilterProcessesUrl, JWTUtil jwtUtil) {
         super(defaultFilterProcessesUrl);
@@ -44,7 +44,7 @@ public class ApiLoginFilter extends AbstractAuthenticationProcessingFilter {
         return getAuthenticationManager().authenticate(token);
     }
 
-    // 인증 성공 처리
+    // 인증(로그인) 성공 처리
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {

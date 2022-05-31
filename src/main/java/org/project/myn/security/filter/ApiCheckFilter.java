@@ -42,6 +42,8 @@ public class ApiCheckFilter extends OncePerRequestFilter {
             // Authorization 헤더 처리
             // 클라이언트에서 전송한 Request에 포함된 Authorization 헤더의 값을 파악하여 정상 요청 여부 확인
             boolean checkHeader = checkAuthHeader(request);
+
+            // 헤더 검증 실시: 'Authorization' 헤더 값을 확인하여 정상/비정상 여부 판단
             if (checkHeader) {
                 filterChain.doFilter(request, response);
             } else {

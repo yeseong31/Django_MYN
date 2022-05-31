@@ -15,23 +15,25 @@ import java.util.Date;
 @Log4j2
 public class JWTUtil {
 
+    // Signature 생성의 기준이 되는 문자열
     private String secretKey = "myn12345678";
 
-    // 유효 기간: 1 month
-    private long expire = 60 * 24 * 30;
+    // 유효 기간: 1 days
+    private long expire = 60 * 24;
 
     // JWT 토큰 생성
     public String generateToken(String content) throws Exception {
         return Jwts.builder()
-                .setIssuedAt(new Date())
-                .setExpiration(Date.from(ZonedDateTime.now().plusMinutes(expire).toInstant()))
-//                .setExpiration(Date.from(ZonedDateTime.now().plusSeconds(1).toInstant()))    // 만료시간 테스트(1초)
-                .claim("sub", content)    // sub라는 이름을 가지는 Claim 생성
+                .setIssuedAt(new Date())    // 토큰 발생 시간 정보
+                .setExpiration(Date.from(ZonedDateTime.now().plusMinutes(expire).toInstant()))    // 토큰 만료 시간
+                .claim("sub", content)    // sub라는 이름을 가지는 Claim 생성: 사용자 이메일 주소를 입력하여 다시 사용할 수 있도록 구성
                 .signWith(SignatureAlgorithm.HS256, secretKey.getBytes(StandardCharsets.UTF_8))
                 .compact();
     }
 
     // 인코딩된 문자열에서 원하는 값을 추출 및 검증
+    // JWT가 이미 만료 기간이 지난 것이라면 여기서 Exception을 발생하게 됨
+    // 또한 위에서 'sub'으로 저장한 이메일을 반환하게 딤
     public String validateAndExtract(String tokenStr) throws Exception {
         String contentValue = null;
 
