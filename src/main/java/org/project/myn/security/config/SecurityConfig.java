@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public ApiCheckFilter apiCheckFilter() {
-        return new ApiCheckFilter("/clubs/**/*");
+        return new ApiCheckFilter("/clubs/**/*", jwtUtil());
     }
 
     @Bean

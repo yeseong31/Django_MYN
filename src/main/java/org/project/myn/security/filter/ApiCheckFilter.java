@@ -2,6 +2,7 @@ package org.project.myn.security.filter;
 
 import lombok.extern.log4j.Log4j2;
 import net.minidev.json.JSONObject;
+import org.project.myn.security.util.JWTUtil;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -18,10 +19,12 @@ public class ApiCheckFilter extends OncePerRequestFilter {
 
     private AntPathMatcher antPathMatcher;
     private String pattern;
+    private JWTUtil jwtUtil;
 
-    public ApiCheckFilter(String pattern) {
+    public ApiCheckFilter(String pattern, JWTUtil jwtUtil) {
         this.antPathMatcher = new AntPathMatcher();
         this.pattern = pattern;
+        this.jwtUtil = jwtUtil;
     }
 
     @Override
@@ -64,11 +67,20 @@ public class ApiCheckFilter extends OncePerRequestFilter {
         boolean checkResult = false;
 
         String authHeader = request.getHeader("Authorization");
-        if (StringUtils.hasText(authHeader)) {
+
+        // Authorization 헤더 메시지의 경우 앞에는 인증 타입을 이용하는데, JWT를 이용할 때는 'Bearer'를 사용함
+        if (StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer ")) {
             log.info("Authorization exist: " + authHeader);
-            if (authHeader.equals("12341234")) {
-                checkResult = true;
+
+            // Authorization 헤더 메시지를 통해 JWT 확인
+            try {
+                String email = jwtUtil.validateAndExtract(authHeader.substring(7));
+                log.info("validate result: " + email);
+                checkResult = email.length() > 0;
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+
         }
 
         return checkResult;
