@@ -19,7 +19,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     // 해당 이메일을 가진 사용자 정보 조회
     @EntityGraph(attributePaths = {"clubMember"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("select ac from Account ac where ac.clubMember.email = :email")
+    @Query("select ac from Account ac where ac.clubMember.id = (select m.id from ClubMember m where m.email = :email)")
     Optional<Account> findAccountByEmail(@Param("email") String email);
 
     // 해당 username을 가진 모든 사용자 정보 조회
@@ -27,10 +27,16 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query("select ac from Account ac where ac.username = :username")
     List<Account> getList(@Param("username") String username);
 
+    // 해당 id를 가진 사용자 삭제
+    @Modifying
+    @EntityGraph(attributePaths = {"clubMember"}, type = EntityGraph.EntityGraphType.LOAD)
+    @Query("delete from Account ac where ac.clubMember.id = :id")
+    void deleteByClubMemberId(@Param("id") Long id);
+
     // 해당 이메일을 가진 사용자 삭제
     @Modifying
     @EntityGraph(attributePaths = {"clubMember"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("delete from Account ac where ac.clubMember.email = :email")
+    @Query("delete from Account ac where ac.clubMember.id = (select m.id from ClubMember m where m.email = :email)")
     void deleteByClubMemberEmail(@Param("email") String email);
 
 }

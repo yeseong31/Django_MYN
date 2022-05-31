@@ -7,14 +7,15 @@ public interface ClubMemberService {
     // 등록
     String register(ClubMemberDTO dto);
     // 조회
-    ClubMemberDTO get(String email);
+    ClubMemberDTO get(Long id);
     //수정
     void modify(ClubMemberDTO dto);
     // 삭제
-    void delete(String email);
+    void remove(Long id);
 
     default ClubMember dtoToEntity(ClubMemberDTO dto) {
         return ClubMember.builder()
+                .id(dto.getId())
                 .email(dto.getEmail())
                 .password(dto.getPassword())
                 .address(dto.getAddress())
@@ -25,6 +26,7 @@ public interface ClubMemberService {
 
     default ClubMemberDTO entityToDto(ClubMember user) {
         return ClubMemberDTO.builder()
+                .id(user.getId())
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .address(user.getAddress())

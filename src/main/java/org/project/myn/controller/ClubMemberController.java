@@ -28,21 +28,21 @@ public class ClubMemberController {
     }
 
     // 사용자 정보 조회
-    @GetMapping(value = "/read", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClubMemberDTO> get(String email) {
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ClubMemberDTO> read(@PathVariable("id") Long id) {
         log.info("-------------------- read --------------------");
-        log.info(email);
+        log.info(id);
 
-        return new ResponseEntity<>(clubMemberService.get(email), HttpStatus.OK);
+        return new ResponseEntity<>(clubMemberService.get(id), HttpStatus.OK);
     }
 
     // 사용자 이메일을 통해 계정 삭제
     @DeleteMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> remove(String email) {
+    public ResponseEntity<String> remove(Long id) {
         log.info("-------------------- remove --------------------");
-        log.info(email);
+        log.info(id);
 
-        clubMemberService.delete(email);
+        clubMemberService.remove(id);
 
         return new ResponseEntity<>("removed", HttpStatus.OK);
     }

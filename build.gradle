@@ -59,6 +59,10 @@ dependencies {
 
 	// 이미지 섬네일
 	implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.17'
+
+	// Java JWT
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
 }
 
 test {
