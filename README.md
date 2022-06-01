@@ -13,7 +13,7 @@
 ![Amazon AWS](https://img.shields.io/badge/AmazonAWS-232F3E.svg?logo=amazon-aws&logoColor=white)
 ![Amazon S3](https://img.shields.io/badge/AmazonS3-569A31.svg?logo=amazon-s3&logoColor=white)
 ![Travis CI](https://img.shields.io/badge/TravisCI-3EAAAF.svg?logo=travis-ci&logoColor=white)
-<!-- ![NGINX](https://img.shields.io/badge/NGINX-009639.svg?logo=nginx&logoColor=white) -->
+![NGINX](https://img.shields.io/badge/NGINX-009639.svg?logo=nginx&logoColor=white)
 
 ## 🔧 Tools
 [![Notion](https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=notion&logoColor=white)](https://www.notion.so/Backend-3e5c6c7e856e4014a6eedf50bce790a1)
