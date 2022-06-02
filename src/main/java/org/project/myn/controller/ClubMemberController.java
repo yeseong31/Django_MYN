@@ -17,16 +17,6 @@ public class ClubMemberController {
 
     private final ClubMemberService clubMemberService;
 
-    // 사용자 정보 등록
-    @PostMapping(value = "")
-    public ResponseEntity<String> register(@RequestBody ClubMemberDTO clubMemberDTO) {
-        log.info("-------------------- register --------------------");
-        log.info(clubMemberDTO);
-
-        String email = clubMemberService.register(clubMemberDTO);
-        return new ResponseEntity<>(email, HttpStatus.OK);
-    }
-
     // 사용자 정보 조회
     @GetMapping(value = "/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClubMemberDTO> read(@PathVariable("email") String email) {
