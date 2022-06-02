@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private ClubUserDetailsService userDetailsService;
 
+    // 비밀번호 암호화
     @Bean
     PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }
 
@@ -33,13 +34,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         // 인가 및 인증에 문제가 있을 때 로그인 화면 출력
+        // 아이디와 비밀번호를 각각 username, password로 받는 것에 주의 (아래 코드에서 변경 가능)
         http.formLogin();
+//                .usernameParameter("username")
+//                .passwordParameter("password");
         // CSRF 비활성화
         http.csrf().disable();
         // 소셜 로그인
         http.oauth2Login().successHandler(successHandler());
         // 자동 로그인
-        http.rememberMe().tokenValiditySeconds(60 * 60 * 24 * 7).userDetailsService(userDetailsService);  // 7days
+        http.rememberMe().tokenValiditySeconds(60 * 60 * 24 * 7).userDetailsService(userDetailsService);  // 7 days
         // ApiFilter 위치 조정
         http.addFilterBefore(apiCheckFilter(), UsernamePasswordAuthenticationFilter.class);
 
@@ -47,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public ApiLoginFilter apiLoginFilter() throws Exception {
-        // 로그인은 '/api/login' 경로를 통해 진행
+        // 로그인은 '/api/login' 경로로 접근하면 동작하도록 함
         ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/login", jwtUtil());
         apiLoginFilter.setAuthenticationManager(authenticationManager());
         apiLoginFilter.setAuthenticationFailureHandler(new ApiLoginFailHandler());
@@ -59,6 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new ClubLoginSuccessHandler(passwordEncoder());
     }
 
+    // 해당 URL 접근 시 자격 증명 확인
     @Bean
     public ApiCheckFilter apiCheckFilter() {
         return new ApiCheckFilter("/clubs/**/*", jwtUtil());

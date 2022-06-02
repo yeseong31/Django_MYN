@@ -29,7 +29,7 @@ public class ApiLoginFailHandler implements AuthenticationFailureHandler {
         response.setContentType("application/json;charset=utf-8");
         JSONObject json = new JSONObject();
         String message = exception.getMessage();
-        json.put("code", "401");
+        json.put("code", "401");    // 인증 실패 시 401 상태 코드 반환
         json.put("message", message);
 
         PrintWriter out = response.getWriter();

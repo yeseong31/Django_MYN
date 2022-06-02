@@ -31,7 +31,7 @@ public class ClubMemberServiceImpl implements ClubMemberService {
         // 해당 이메일을 가지는 사용자가 DB에 존재하는지 먼저 파악해야 함
         Optional<ClubMember> result = clubMemberRepository.findByEmailWithSocial(dto.getEmail(), dto.isFromSocial());
         if (result.isPresent()) {
-            return null;
+            return "이미 존재하는 사용자입니다. 로그인해주세요.";
         }
 
         ClubMember clubMember = dtoToEntity(dto);
@@ -46,8 +46,8 @@ public class ClubMemberServiceImpl implements ClubMemberService {
     }
 
     @Override
-    public ClubMemberDTO get(Long id) {
-        Optional<ClubMember> result = clubMemberRepository.findById(id);
+    public ClubMemberDTO get(String email) {
+        Optional<ClubMember> result = clubMemberRepository.findByEmail(email);
         return result.map(this::entityToDto).orElse(null);
     }
 
