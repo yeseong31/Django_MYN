@@ -33,13 +33,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         // 인가 및 인증에 문제가 있을 때 로그인 화면 출력
+        // 아이디와 비밀번호를 각각 username, password로 받는 것에 주의 (아래 코드에서 변경 가능)
         http.formLogin();
+//                .usernameParameter("username")
+//                .passwordParameter("password");
         // CSRF 비활성화
         http.csrf().disable();
         // 소셜 로그인
         http.oauth2Login().successHandler(successHandler());
         // 자동 로그인
-        http.rememberMe().tokenValiditySeconds(60 * 60 * 24 * 7).userDetailsService(userDetailsService);  // 7days
+        http.rememberMe().tokenValiditySeconds(60 * 60 * 24 * 7).userDetailsService(userDetailsService);  // 7 days
         // ApiFilter 위치 조정
         http.addFilterBefore(apiCheckFilter(), UsernamePasswordAuthenticationFilter.class);
 

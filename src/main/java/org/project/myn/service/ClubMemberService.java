@@ -7,7 +7,7 @@ public interface ClubMemberService {
     // 등록
     String register(ClubMemberDTO dto);
     // 조회
-    ClubMemberDTO get(Long id);
+    ClubMemberDTO get(String email);
     //수정
     void modify(ClubMemberDTO dto);
     // 삭제
