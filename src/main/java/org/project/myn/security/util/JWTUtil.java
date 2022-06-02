@@ -15,6 +15,7 @@ import java.util.Date;
 @Log4j2
 public class JWTUtil {
 
+    // Signature 생성 (인코딩된 JWT 문자열 뒤에 붙이는 암호화된 값)
     private String secretKey = "myn12345678";
 
     // 유효 기간: 1 month
@@ -25,7 +26,6 @@ public class JWTUtil {
         return Jwts.builder()
                 .setIssuedAt(new Date())
                 .setExpiration(Date.from(ZonedDateTime.now().plusMinutes(expire).toInstant()))
-//                .setExpiration(Date.from(ZonedDateTime.now().plusSeconds(1).toInstant()))    // 만료시간 테스트(1초)
                 .claim("sub", content)    // sub라는 이름을 가지는 Claim 생성
                 .signWith(SignatureAlgorithm.HS256, secretKey.getBytes(StandardCharsets.UTF_8))
                 .compact();
