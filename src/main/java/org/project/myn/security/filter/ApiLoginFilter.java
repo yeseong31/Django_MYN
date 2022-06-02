@@ -37,6 +37,8 @@ public class ApiLoginFilter extends AbstractAuthenticationProcessingFilter {
 
         String email = request.getParameter("email");
         String pw = request.getParameter("password");
+        log.info("attemptAuthentication --- email: " + email);
+        log.info("attemptAuthentication --- password: " + pw);
 
         // 인증 진행
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(email, pw);
