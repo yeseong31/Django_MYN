@@ -51,8 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public ApiLoginFilter apiLoginFilter() throws Exception {
-        // 로그인은 '/api/login' 경로로 접근하면 동작하도록 함
-        ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/login", jwtUtil());
+        // 로그인은 '/api/signin' 경로로 접근하면 동작하도록 함
+        ApiLoginFilter apiLoginFilter = new ApiLoginFilter("/api/signin", jwtUtil());
         apiLoginFilter.setAuthenticationManager(authenticationManager());
         apiLoginFilter.setAuthenticationFailureHandler(new ApiLoginFailHandler());
         return apiLoginFilter;
