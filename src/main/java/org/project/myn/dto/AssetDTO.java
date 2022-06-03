@@ -23,5 +23,9 @@ public class AssetDTO {
 
     // 사용자 Account ID
     private Long accountId;
+    // 사용자 Account username
+    private String username;
+    // 사용자 Account address
+    private String address;
 
 }

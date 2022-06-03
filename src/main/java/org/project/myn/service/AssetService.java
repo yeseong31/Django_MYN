@@ -31,6 +31,8 @@ public interface AssetService {
                 .description(asset.getDescription())
                 .url(asset.getUrl())
                 .accountId(asset.getAccount().getId())
+                .username(asset.getAccount().getUsername())
+                .address(asset.getAccount().getAddress())
                 .regDate(asset.getRegDate())
                 .modDate(asset.getModDate())
                 .build();
