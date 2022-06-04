@@ -3,7 +3,7 @@ package org.project.myn.security.filter;
 import lombok.extern.log4j.Log4j2;
 import org.project.myn.security.dto.ClubAuthMemberDTO;
 import org.project.myn.security.util.JWTUtil;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -34,6 +34,12 @@ public class ApiLoginFilter extends AbstractAuthenticationProcessingFilter {
 
         log.info("-------------------- ApiLoginFilter --------------------");
         log.info("attemptAuthentication");
+
+        // 로그인 시도는 POST 방식만 허용
+//        if (!request.getMethod().equals("POST")) {
+//            throw new AuthenticationServiceException(
+//                    "Authentication method not supported: " + request.getMethod());
+//        }
 
         String email = request.getParameter("email");
         String pw = request.getParameter("password");
