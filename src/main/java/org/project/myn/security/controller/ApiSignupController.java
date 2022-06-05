@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class ApiController {
+public class ApiSignupController {
 
     private final ClubMemberService clubMemberService;
 
