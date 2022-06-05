@@ -21,7 +21,7 @@ public class CollectionServiceImpl implements CollectionService {
     public Long register(CollectionDTO collectionDTO) {
         Collection collection = dtoToEntity(collectionDTO);
         collectionRepository.save(collection);
-        return collectionDTO.getId();
+        return collection.getId();
     }
 
     @Override
