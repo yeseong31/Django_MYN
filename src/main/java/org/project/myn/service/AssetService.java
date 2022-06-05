@@ -3,6 +3,7 @@ package org.project.myn.service;
 import org.project.myn.dto.AssetDTO;
 import org.project.myn.entity.Account;
 import org.project.myn.entity.Asset;
+import org.project.myn.entity.Collection;
 
 public interface AssetService {
     // 등록
@@ -21,6 +22,7 @@ public interface AssetService {
                 .description(dto.getDescription())
                 .url(dto.getUrl())
                 .account(Account.builder().id(dto.getAccountId()).build())
+                .collection(Collection.builder().id(dto.getCollectionId()).build())
                 .build();
     }
 
@@ -31,8 +33,8 @@ public interface AssetService {
                 .description(asset.getDescription())
                 .url(asset.getUrl())
                 .accountId(asset.getAccount().getId())
-                .username(asset.getAccount().getUsername())
-                .address(asset.getAccount().getAddress())
+                .accountUsername(asset.getAccount().getUsername())
+                .accountAddress(asset.getAccount().getAddress())
                 .regDate(asset.getRegDate())
                 .modDate(asset.getModDate())
                 .build();

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "account")
+@ToString(exclude = {"account", "collection"})
 public class Asset extends BaseEntity {
 
     @Id
@@ -20,14 +20,15 @@ public class Asset extends BaseEntity {
     private String description;
     private String url;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Account account;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Collection collection;
 
     public void changeName(String name) {
         this.name = name;
     }
-    public void changeDescription(String description) {
-        this.description = description;
-    }
+    public void changeDescription(String description) { this.description = description; }
 
 }
