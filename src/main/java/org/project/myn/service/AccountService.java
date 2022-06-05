@@ -9,12 +9,17 @@ import java.util.List;
 public interface AccountService {
     // 등록
     Long register(AccountDTO accountDTO);
+
     // 조회
     AccountDTO get(Long id);
+
     //수정
     void modify(AccountDTO accountDTO);
+
     // 삭제
     void remove(Long id);
+
+    // 삭제(이메일)
     void removeByEmail(String email);
 
     // 해당 username을 가지는 사용자 정보 조회

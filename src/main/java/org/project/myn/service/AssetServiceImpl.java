@@ -25,6 +25,7 @@ public class AssetServiceImpl implements AssetService {
         return assetDTO.getId();
     }
 
+    @Transactional
     @Override
     public AssetDTO get(Long id) {
         Optional<Asset> result = assetRepository.findById(id);

@@ -6,25 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class AssetDTO {
+public class CollectionDTO {
 
     private Long id;
 
+    private String slug;
     private String name;
-    private String description;
     private String url;
 
     private LocalDateTime regDate, modDate;
-
-    // 사용자 Account ID
-    private Long accountId;
-
-    // 사용자 Collection ID
-    private Long collectionId;
 
 }

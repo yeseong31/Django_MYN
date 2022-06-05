@@ -9,26 +9,21 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = {"owner", "collection"})
-public class Asset extends BaseEntity {
+@ToString
+public class Collection extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String slug;
+
     private String name;
-    private String description;
     private String url;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    private Account owner;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Collection collection;
 
     public void changeName(String name) {
         this.name = name;
     }
-    public void changeDescription(String description) { this.description = description; }
 
 }
