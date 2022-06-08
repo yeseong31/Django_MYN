@@ -66,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // 해당 URL 접근 시 자격 증명 확인
     @Bean
     public ApiCheckFilter apiCheckFilter() {
-        return new ApiCheckFilter("/api/**/*", jwtUtil());
+        return new ApiCheckFilter("/api/v1/**/*", jwtUtil());
     }
 
     @Bean

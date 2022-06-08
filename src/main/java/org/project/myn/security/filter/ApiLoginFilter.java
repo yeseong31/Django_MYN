@@ -3,7 +3,6 @@ package org.project.myn.security.filter;
 import lombok.extern.log4j.Log4j2;
 import org.project.myn.security.dto.ClubAuthMemberDTO;
 import org.project.myn.security.util.JWTUtil;
-import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
