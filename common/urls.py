@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh_jwt_token
 
-from common.views import RegisterView, SigninView, UserActivateView
+from common.views import RegisterView, SigninView, UserActivateView, CheckIDView, CheckEmailView
 
 urlpatterns = [
     # ----- Authentication -----
@@ -9,7 +9,11 @@ urlpatterns = [
     path('signup/', RegisterView.as_view()),
     # 로그인
     path('signin/', SigninView.as_view()),
-    # 이메일 인증
+    # 아이디 중복 확인
+    path('signup/check/id/', CheckIDView.as_view()),
+    # 이메일 인증 링크 전송
+    path('signup/check/email/', CheckEmailView.as_view()),
+    # 이메일 유효성 검증
     path('activate/<str:uidb64>/<str:token>/', UserActivateView.as_view()),
 
     # ----- JWT Token -----
