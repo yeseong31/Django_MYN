@@ -22,4 +22,4 @@ from config.settings import base
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('common/', include('common.urls')),  # 회원 관리
-] + static(base.STATIC_URL, document_root=base.STATIC_ROOT)
+] + static(base.STATIC_URL, document_root=base.STATIC_ROOT, insecure=True)
