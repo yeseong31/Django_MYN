@@ -62,7 +62,7 @@ class UserActivateView(APIView):
 class CheckIDView(APIView):
     """아이디 중복 확인"""
     def post(self, request):
-        username = request.data['userid']
+        username = request.data['username']
         if User.objects.filter(username=username):
             return Response({'message': '이미 존재하는 사용자입니다.'}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'message': '사용 가능한 아이디입니다.'}, status=status.HTTP_200_OK)
@@ -71,7 +71,7 @@ class CheckIDView(APIView):
 class CheckEmailView(APIView):
     """이메일 인증"""
     def post(self, request):
-        username = request.data['userid']
+        username = request.data['username']
         email = request.data['email']
 
         user = User.objects.create_user(username=username, email=email)
