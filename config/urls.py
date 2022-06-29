@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('common.urls')),  # 회원관리
+    path('common/', include('common.urls')),  # 회원관리
 ]
