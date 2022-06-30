@@ -18,6 +18,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(queryset=User.objects.all())],  # 이메일 중복 검증
+        help_text='이메일(Unique)'
     )
 
     class Meta:
@@ -48,11 +49,10 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 class SigninSerializer(serializers.Serializer):
     """로그인 Serializer"""
-
     # 비밀번호에 write_only 옵션
     # 클라이언트->서버 역직렬화 가능, 서버->클라이언트 직렬화 불가능
-    username = serializers.CharField(required=True)
-    password = serializers.CharField(required=True, write_only=True)
+    username = serializers.CharField(required=True, help_text='사용자 이름')
+    password = serializers.CharField(required=True, write_only=True, help_text='비밀번호')
 
     def validate(self, data):
         user = authenticate(**data)

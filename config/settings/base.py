@@ -32,19 +32,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # common
     'common.apps.CommonConfig',
-
-    # Django REST Framework
     'rest_framework',
     'rest_framework.authtoken',  # 기본 토큰 인증 방식 사용
-
-    # CORS
     'corsheaders',
-
-    # Filter
     'django_filters',
+    'drf_yasg',  # API 문서화
 ]
 
 MIDDLEWARE = [
