@@ -84,7 +84,16 @@
 
 <br>
 
-- 모든 설정 완료 시 다음의 명령어로 서버를 실행할 수 있습니다.
+- 모든 설정 완료 시 다음의 명령어로 로컬 서버를 실행할 수 있습니다.
   ```sh
+  (myn)$ set DJANGO_SETTINGS_MODULE=config.settings.local
   (myn)$ python manage.py runserver
+  Watching for file changes with StatReloader
+  Performing system checks...
+
+  System check identified no issues (0 silenced).
+  June 30, 2022 - 14:00:15
+  Django version 4.0.5, using settings 'config.settings.local'
+  Starting development server at http://127.0.0.1:8000/
+  Quit the server with CTRL-BREAK.
   ```
