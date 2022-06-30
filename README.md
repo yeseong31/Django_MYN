@@ -49,7 +49,6 @@
   # ----- Email settings -----
   EMAIL_HOST_USER =  	    # 이메일 주소(인증 링크 발송)
   EMAIL_HOST_PASSWORD = 	    # 이메일 비밀번호(인증 링크 발송) - 별도 설정 필요
-  EMAIL_AUTH_PASSWORD = 	    # 이메일 인증 링크 구성 문자열
   # ----- end of settings -----
   
   # SECURITY WARNING: keep the secret key used in production secret!
