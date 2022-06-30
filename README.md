@@ -80,8 +80,6 @@
       'SERVER_EMAIL': 'MYN',
       'REDIRECT_PAGE': 'http://127.0.0.1:8000/'
   }
-
-  EMAIL_AUTH_PASSWORD = EMAIL_AUTH_PASSWORD
   ```
 
 <br>
